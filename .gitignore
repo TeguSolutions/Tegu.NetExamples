@@ -348,3 +348,5 @@ MigrationBackup/
 
 # Ionide (cross platform F# VS Code tools) working folder
 .ionide/
+/Backend/Tegu.Net.Backend.WebApi.Classic/appsettings.Development.json
+/Backend/Tegu.Net.Backend.WebApi.MediatR/appsettings.Development.json
