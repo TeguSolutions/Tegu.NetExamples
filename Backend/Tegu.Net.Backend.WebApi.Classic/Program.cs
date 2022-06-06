@@ -1,10 +1,23 @@
+using Microsoft.EntityFrameworkCore;
+using Tegu.Net.Backend.Data.SQL.Context;
+
 var builder = WebApplication.CreateBuilder(args);
+var configuration = builder.Configuration;
 var services = builder.Services;
 
-// Add services to the container.
-//services.AddDbContextFactory<>()
+void InitSqlDb()
+{
+    // Add services to the container.
+    services.AddDbContextFactory<TeguSqlContext>(o =>
+            o.UseSqlServer(configuration.GetConnectionString("SqlDb"))
+                // For detailed Migration infos / values (only debug?)
+                .EnableSensitiveDataLogging(),
+        ServiceLifetime.Transient
+    );
 
+}
 
+InitSqlDb();
 
 
 builder.Services.AddControllers();
