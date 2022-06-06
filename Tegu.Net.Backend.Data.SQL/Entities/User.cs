@@ -1,6 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
-
-namespace Tegu.Net.Backend.Data.SQL.Entities;
+﻿namespace Tegu.Net.Backend.Data.SQL.Entities;
 
 public class User
 {
