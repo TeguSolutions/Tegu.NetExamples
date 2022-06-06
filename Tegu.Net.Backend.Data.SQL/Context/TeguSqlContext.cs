@@ -1,5 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Tegu.Net.Backend.Data.SQL.Entities;
+using Tegu.Net.Shared.Definitions;
+
 // ReSharper disable PartialMethodWithSinglePart
 // ReSharper disable PartialTypeWithSinglePart
 
@@ -40,6 +42,10 @@ public partial class TeguSqlContext : DbContext
             .HasKey(ur => new { ur.UserId, ur.RoleId });
 
         // Data seed
+        foreach (var role in RoleDefinitions.Collection)
+        {
+            builder.Entity<Role>().HasData(new Role { Id = role.Id, Name = role.Name });
+        }
 
 
 
