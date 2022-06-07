@@ -23,6 +23,8 @@ public partial class TeguSqlContext : DbContext
 
     public DbSet<TeguType> TeguTypes { get; set; }
 
+    public DbSet<OwnedTegu> OwnedTegus { get; set; }
+
     // Many To Many Relations
     public DbSet<UserRole> UserRoles { get; set; }
 

@@ -20,4 +20,11 @@ public class TeguType
     [Required(AllowEmptyStrings = false)]
     [StringLength(20)]
     public string Color { get; set; }
+
+    #region Navigation - OwnedTegus
+
+    [InverseProperty(nameof(OwnedTegu.TeguType))]
+    public virtual ICollection<OwnedTegu> OwnedTegus { get; set; }
+
+    #endregion
 }

@@ -27,4 +27,11 @@ public class User
     public virtual ICollection<UserRole> UserRoles { get; set; }
 
     #endregion
+
+    #region Navigation - Tegus
+
+    [InverseProperty(nameof(OwnedTegu.Owner))]
+    public virtual ICollection<OwnedTegu> OwnedTegus { get; set; }
+
+    #endregion
 }
