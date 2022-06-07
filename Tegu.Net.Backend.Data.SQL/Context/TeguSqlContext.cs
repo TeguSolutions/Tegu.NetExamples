@@ -21,6 +21,7 @@ public partial class TeguSqlContext : DbContext
     public DbSet<User> Users { get; set; }
     public DbSet<Role> Roles { get; set; }
 
+    public DbSet<TeguType> TeguTypes { get; set; }
 
     // Many To Many Relations
     public DbSet<UserRole> UserRoles { get; set; }
@@ -47,7 +48,14 @@ public partial class TeguSqlContext : DbContext
             builder.Entity<Role>().HasData(new Role { Id = role.Id, Name = role.Name });
         }
 
-
+        foreach (var teguType in TeguTypeDefinitions.Collection)
+        {
+            builder.Entity<TeguType>().HasData(new TeguType
+            {
+                Id = teguType.Id, FullName = teguType.FullName, Name = teguType.Name, LatinName = teguType.LatinName,
+                Color = teguType.Color
+            });
+        }
 
 
 
