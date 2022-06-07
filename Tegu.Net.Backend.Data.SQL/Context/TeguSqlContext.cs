@@ -60,6 +60,15 @@ public partial class TeguSqlContext : DbContext
         }
 
 
+        //builder.Entity<User>().HasData(new User()
+        //{
+        //    Id = Guid.NewGuid(),
+        //    Email = "thetegu@tegu.net",
+        //    FirstName = "",
+        //    LastName = "",
+        //    PasswordHash = BCrypt.Net.BCrypt.HashPassword("")
+        //});
+
 
         OnModelCreatingPartial(builder);
     }
