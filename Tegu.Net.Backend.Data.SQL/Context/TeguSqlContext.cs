@@ -59,15 +59,106 @@ public partial class TeguSqlContext : DbContext
             });
         }
 
+        #region Users
 
-        //builder.Entity<User>().HasData(new User()
-        //{
-        //    Id = Guid.NewGuid(),
-        //    Email = "thetegu@tegu.net",
-        //    FirstName = "",
-        //    LastName = "",
-        //    PasswordHash = BCrypt.Net.BCrypt.HashPassword("")
-        //});
+        var admintegu = new User
+        {
+            Id = Guid.Parse("b1ad8f85-f34a-4b0f-bf63-bfeb5f6173f4"),
+            Email = "admintegu@tegu.net",
+            FirstName = "Admin",
+            LastName = "Tegu",
+            PasswordHash = "$2a$11$E67YeDjnVXx47x7aPanznu2BT6Yql.0i1EvuY3MQhM4KcxbN9ljbu"
+            //PasswordHash = BCrypt.Net.BCrypt.HashPassword("admintegu@tegu.net")
+        };
+
+        var bwtegu = new User
+        {
+            Id = Guid.Parse("079f5040-3662-4897-b827-d3505ea2438a"),
+            Email = "bwtegu@tegu.net",
+            FirstName = "B&W",
+            LastName = "Tegu",
+            PasswordHash = "$2a$11$z9bxZR2dYitdeBHvV1dVDOvERirnnEDkEwAH0tBxwunzFU0Z7omRG"
+            //PasswordHash = BCrypt.Net.BCrypt.HashPassword("bwtegu@tegu.net")
+        };
+
+        var mixedtegu = new User
+        {
+            Id = Guid.Parse("6c266242-a52a-46d1-9083-dcf0f3745957"),
+            Email = "mixedtegu@tegu.net",
+            FirstName = "Mixed",
+            LastName = "Tegu",
+            PasswordHash = "$2a$11$cMGAh5FAcAnSd53qRDwq8OaEZlnqVE39l5cZ7mTE3KZmHli55wsnG"
+            //PasswordHash = BCrypt.Net.BCrypt.HashPassword("mixedtegu@tegu.net")
+        };
+
+        var notegu = new User
+        {
+            Id = Guid.Parse("28218d70-5b0d-4d19-8171-1cae6ae75d30"),
+            Email = "notegu@tegu.net",
+            FirstName = "No",
+            LastName = "Tegu",
+            PasswordHash = "$2a$11$CYcwsHlqq1qV77xdsUae3.OsTWD3GCm5P7716vnVdsw1wJHeEdQZ2"
+            //PasswordHash = BCrypt.Net.BCrypt.HashPassword("notegu@tegu.net")
+        };
+
+        builder.Entity<User>().HasData(
+            admintegu,
+            bwtegu,
+            mixedtegu,
+            notegu);
+
+        #endregion
+
+        #region User Roles
+
+        builder.Entity<UserRole>().HasData(
+            new UserRole { UserId = admintegu.Id, RoleId = RoleDefinitions.Tegu.Id },
+            new UserRole { UserId = admintegu.Id, RoleId = RoleDefinitions.Client.Id },
+            new UserRole { UserId = bwtegu.Id, RoleId = RoleDefinitions.Client.Id },
+            new UserRole { UserId = mixedtegu.Id, RoleId = RoleDefinitions.Client.Id }
+        );
+
+        #endregion
+
+        #region OwnedTegus
+
+        var bwtegu_tegu1 = new OwnedTegu
+        {
+            Id = Guid.Parse("6f867827-f9bc-4163-aca1-f702430613d7"),
+            OwnerId = bwtegu.Id,
+            TeguTypeId = TeguTypeDefinitions.ArgentineBW.Id,
+            Name = "The Beast"
+        };
+
+        var mixedtegu_tegu1 = new OwnedTegu
+        {
+            Id = Guid.Parse("df37fe94-6167-4be4-8270-0fdee04a83e8"),
+            OwnerId = mixedtegu.Id,
+            TeguTypeId = TeguTypeDefinitions.ArgentineBW.Id,
+            Name = "Stop hiding!"
+        };
+        var mixedtegu_tegu2 = new OwnedTegu
+        {
+            Id = Guid.Parse("317d3ecd-3a02-4e39-9e8b-b30d31494b72"),
+            OwnerId = mixedtegu.Id,
+            TeguTypeId = TeguTypeDefinitions.ArgentineRed.Id,
+            Name = "Don't eat my shoes!"
+        };
+        var mixedtegu_tegu3 = new OwnedTegu
+        {
+            Id = Guid.Parse("e3757b2f-734f-43ad-b0d4-1300766ed7a0"),
+            OwnerId = mixedtegu.Id,
+            TeguTypeId = TeguTypeDefinitions.Columbian.Id,
+            Name = "No, those fingers are not food!"
+        };
+
+        builder.Entity<OwnedTegu>().HasData(
+            bwtegu_tegu1,
+            mixedtegu_tegu1,
+            mixedtegu_tegu2,
+            mixedtegu_tegu3);
+
+        #endregion
 
 
         OnModelCreatingPartial(builder);

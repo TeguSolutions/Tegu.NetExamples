@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Tegu.Net.Backend.Data.SQL.Context;
 
@@ -11,9 +12,10 @@ using Tegu.Net.Backend.Data.SQL.Context;
 namespace Tegu.Net.Backend.Data.SQL.Migrations
 {
     [DbContext(typeof(TeguSqlContext))]
-    partial class TeguSqlContextModelSnapshot : ModelSnapshot
+    [Migration("20220608212223_DataSeed users and roles")]
+    partial class DataSeedusersandroles
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -46,36 +48,6 @@ namespace Tegu.Net.Backend.Data.SQL.Migrations
                     b.HasIndex("TeguTypeId");
 
                     b.ToTable("OwnedTegus");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = new Guid("6f867827-f9bc-4163-aca1-f702430613d7"),
-                            Name = "The Beast",
-                            OwnerId = new Guid("079f5040-3662-4897-b827-d3505ea2438a"),
-                            TeguTypeId = 1
-                        },
-                        new
-                        {
-                            Id = new Guid("df37fe94-6167-4be4-8270-0fdee04a83e8"),
-                            Name = "Stop hiding!",
-                            OwnerId = new Guid("6c266242-a52a-46d1-9083-dcf0f3745957"),
-                            TeguTypeId = 1
-                        },
-                        new
-                        {
-                            Id = new Guid("317d3ecd-3a02-4e39-9e8b-b30d31494b72"),
-                            Name = "Don't eat my shoes!",
-                            OwnerId = new Guid("6c266242-a52a-46d1-9083-dcf0f3745957"),
-                            TeguTypeId = 2
-                        },
-                        new
-                        {
-                            Id = new Guid("e3757b2f-734f-43ad-b0d4-1300766ed7a0"),
-                            Name = "No, those fingers are not food!",
-                            OwnerId = new Guid("6c266242-a52a-46d1-9083-dcf0f3745957"),
-                            TeguTypeId = 3
-                        });
                 });
 
             modelBuilder.Entity("Tegu.Net.Backend.Data.SQL.Entities.Role", b =>
