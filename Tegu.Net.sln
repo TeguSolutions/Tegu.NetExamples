@@ -23,7 +23,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Backend.Data", "Backend.Dat
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Tegu.Net.Backend.Data.SQL", "Tegu.Net.Backend.Data.SQL\Tegu.Net.Backend.Data.SQL.csproj", "{D6B7E531-BDAC-46C7-B09E-7D9993E121EE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tegu.Net.Backend.Shared", "Tegu.Net.Backend.Shared\Tegu.Net.Backend.Shared.csproj", "{4AC97096-47BD-4122-901B-30222CAB6169}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Tegu.Net.Backend.Shared", "Tegu.Net.Backend.Shared\Tegu.Net.Backend.Shared.csproj", "{4AC97096-47BD-4122-901B-30222CAB6169}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -1,6 +1,5 @@
 using Microsoft.EntityFrameworkCore;
 using Tegu.Net.Backend.Data.SQL.Context;
-using Tegu.Net.Backend.Data.SQL.Entities;
 
 var builder = WebApplication.CreateBuilder(args);
 var configuration = builder.Configuration;

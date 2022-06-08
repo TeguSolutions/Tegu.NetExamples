@@ -18,4 +18,8 @@
     <ProjectReference Include="..\..\Tegu.Net.Backend.Data.SQL\Tegu.Net.Backend.Data.SQL.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Managers\" />
+  </ItemGroup>
+
 </Project>
