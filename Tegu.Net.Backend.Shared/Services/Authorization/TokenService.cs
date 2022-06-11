@@ -38,7 +38,7 @@ public class TokenService
             }
 
             var tokenHandler = new JwtSecurityTokenHandler();
-            var key = Encoding.ASCII.GetBytes(_jwtSettings.Secret);
+            var key = Encoding.ASCII.GetBytes(_jwtSettings.JwtSecret);
             var tokenDescriptor = new SecurityTokenDescriptor
             {
                 Subject = claimsIdentity,
@@ -67,7 +67,7 @@ public class TokenService
         try
         {
             var tokenHandler = new JwtSecurityTokenHandler();
-            var key = Encoding.ASCII.GetBytes(_jwtSettings.Secret);
+            var key = Encoding.ASCII.GetBytes(_jwtSettings.JwtSecret);
 
             tokenHandler.ValidateToken(token, new TokenValidationParameters
             {
