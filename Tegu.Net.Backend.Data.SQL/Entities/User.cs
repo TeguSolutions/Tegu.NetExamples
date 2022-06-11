@@ -28,6 +28,13 @@ public class User
 
     #endregion
 
+    #region Navigation - RefreshTokens
+
+    [InverseProperty(nameof(RefreshToken.User))]
+    public ICollection<RefreshToken> RefreshTokens { get; set; }
+
+    #endregion
+
     #region Navigation - Tegus
 
     [InverseProperty(nameof(OwnedTegu.Owner))]
