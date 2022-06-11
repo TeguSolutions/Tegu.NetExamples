@@ -21,9 +21,9 @@ public class UserSqlRepository : IUserRepository
     {
         try
         {
-            var context = await _dbFactory.CreateDbContextAsync();
+            var dbContext = await _dbFactory.CreateDbContextAsync();
 
-            var user = await context.Users
+            var user = await dbContext.Users
                 .If(roles is true, 
                     q => q.Include(u => u.UserRoles)
                                                     .ThenInclude(ur => ur.Role))
@@ -41,9 +41,9 @@ public class UserSqlRepository : IUserRepository
     {
         try
         {
-            var context = await _dbFactory.CreateDbContextAsync();
+            var dbContext = await _dbFactory.CreateDbContextAsync();
 
-            var user = await context.Users
+            var user = await dbContext.Users
                 .If(roles is true, 
                     q => q.Include(u => u.UserRoles)
                         .ThenInclude(ur => ur.Role))

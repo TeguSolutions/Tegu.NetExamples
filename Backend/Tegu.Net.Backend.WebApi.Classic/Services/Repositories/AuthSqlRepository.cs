@@ -17,18 +17,55 @@ public class AuthSqlRepository : IAuthRepository
         _dbFactory = dbFactory ?? throw new ArgumentNullException(nameof(dbFactory));
     }
 
-    public async Task<Result> AddRefreshToken(RefreshToken refreshtoken)
+    public async Task<Result> AddRefreshToken(RefreshToken refreshToken)
     {
-        
+        try
+        {
+            var dbContext = await _dbFactory.CreateDbContextAsync();
+
+            await dbContext.RefreshTokens.AddAsync(refreshToken);
+            await dbContext.SaveChangesAsync();
+            return Result.Ok();
+        }
+        catch (Exception e)
+        {
+            _logger.LogError(e);
+            return Result.Fail();
+        }
     }
 
-    public async Task<Result<RefreshToken>> GetRefreshToken(Guid id)
+    public async Task<Result<RefreshToken>> GetRefreshToken(Guid refreshTokenId)
     {
-        throw new NotImplementedException();
+        try
+        {
+            var dbContext = await _dbFactory.CreateDbContextAsync();
+
+            var refreshToken = await dbContext.RefreshTokens.FirstAsync(q => q.Id == refreshTokenId);
+            return Result<RefreshToken>.OkData(refreshToken);
+        }
+        catch (Exception e)
+        {
+            _logger.LogError(e);
+            return Result<RefreshToken>.Fail();
+        }
     }
 
-    public async Task<Result> DeleteRefreshToken(RefreshToken refreshtoken)
+    public async Task<Result> DeleteRefreshToken(RefreshToken refreshToken)
     {
-        throw new NotImplementedException();
+        try
+        {
+            var dbContext = await _dbFactory.CreateDbContextAsync();
+
+            // Todo: ?? probably not good
+            //var refreshToken = await dbContext.RefreshTokens.FirstOrDefaultAsync()
+            dbContext.RefreshTokens.Remove(refreshToken);
+            await dbContext.SaveChangesAsync();
+            return Result.Ok();
+        }
+        catch (Exception e)
+        {
+            _logger.LogError(e);
+            return Result.Fail();
+        }
     }
 }

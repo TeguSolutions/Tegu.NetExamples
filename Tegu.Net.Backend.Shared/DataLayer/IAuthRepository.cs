@@ -5,7 +5,7 @@ namespace Tegu.Net.Backend.Shared.DataLayer;
 
 public interface IAuthRepository
 {
-    Task<Result> AddRefreshToken(RefreshToken refreshtoken);
-    Task<Result<RefreshToken>> GetRefreshToken(Guid id);
-    Task<Result> DeleteRefreshToken(RefreshToken refreshtoken);
+    Task<Result> AddRefreshToken(RefreshToken refreshToken);
+    Task<Result<RefreshToken>> GetRefreshToken(Guid refreshTokenId);
+    Task<Result> DeleteRefreshToken(RefreshToken refreshToken);
 }
