@@ -9,22 +9,22 @@ namespace Tegu.Net.Backend.WebApi.Classic.Services.Repositories;
 public class UserSqlRepository : IUserRepository
 {
     private readonly ILogger<UserSqlRepository> _logger;
-    private readonly IDbContextFactory<TeguSqlContext> _factory;
+    private readonly IDbContextFactory<TeguSqlContext> _dbFactory;
 
-    public UserSqlRepository(ILogger<UserSqlRepository> logger, IDbContextFactory<TeguSqlContext> factory)
+    public UserSqlRepository(ILogger<UserSqlRepository> logger, IDbContextFactory<TeguSqlContext> dbFactory)
     {
         _logger = logger ?? throw new ArgumentNullException(nameof(logger));
-        _factory = factory ?? throw new ArgumentNullException(nameof(factory));
+        _dbFactory = dbFactory ?? throw new ArgumentNullException(nameof(dbFactory));
     }
 
-    public async Task<Result<User>> GetById(Guid userId, bool? includeRoles = null)
+    public async Task<Result<User>> GetById(Guid userId, bool? roles = null)
     {
         try
         {
-            var context = await _factory.CreateDbContextAsync();
+            var context = await _dbFactory.CreateDbContextAsync();
 
             var user = await context.Users
-                .If(includeRoles is true, 
+                .If(roles is true, 
                     q => q.Include(u => u.UserRoles)
                                                     .ThenInclude(ur => ur.Role))
                 .SingleOrDefaultAsync(q => q.Id == userId);
@@ -39,6 +39,21 @@ public class UserSqlRepository : IUserRepository
 
     public async Task<Result<User>> GetByEmail(string email, bool? roles = null)
     {
-        throw new NotImplementedException();
+        try
+        {
+            var context = await _dbFactory.CreateDbContextAsync();
+
+            var user = await context.Users
+                .If(roles is true, 
+                    q => q.Include(u => u.UserRoles)
+                        .ThenInclude(ur => ur.Role))
+                .SingleOrDefaultAsync(q => q.Email.ToLower() == email.ToLower());
+            return Result<User>.OkData(user);
+        }
+        catch (Exception e)
+        {
+            _logger.LogError(e);
+            return Result<User>.Fail();
+        }
     }
 }

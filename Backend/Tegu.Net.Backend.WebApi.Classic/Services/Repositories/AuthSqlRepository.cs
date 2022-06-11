@@ -9,17 +9,17 @@ namespace Tegu.Net.Backend.WebApi.Classic.Services.Repositories;
 public class AuthSqlRepository : IAuthRepository
 {
     private readonly ILogger<AuthSqlRepository> _logger;
-    private readonly IDbContextFactory<TeguSqlContext> _factory;
+    private readonly IDbContextFactory<TeguSqlContext> _dbFactory;
 
-    public AuthSqlRepository(ILogger<AuthSqlRepository> logger, IDbContextFactory<TeguSqlContext> factory)
+    public AuthSqlRepository(ILogger<AuthSqlRepository> logger, IDbContextFactory<TeguSqlContext> dbFactory)
     {
         _logger = logger ?? throw new ArgumentNullException(nameof(logger));
-        _factory = factory ?? throw new ArgumentNullException(nameof(factory));
+        _dbFactory = dbFactory ?? throw new ArgumentNullException(nameof(dbFactory));
     }
 
     public async Task<Result> AddRefreshToken(RefreshToken refreshtoken)
     {
-        throw new NotImplementedException();
+        
     }
 
     public async Task<Result<RefreshToken>> GetRefreshToken(Guid id)

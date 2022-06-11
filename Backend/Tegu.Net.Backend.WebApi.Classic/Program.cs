@@ -12,7 +12,7 @@ var builder = WebApplication.CreateBuilder(args);
 var configuration = builder.Configuration;
 var services = builder.Services;
 
-#region App Service Injections
+#region App Service Injection Helper Functions
 
 void InitSqlDb()
 {
@@ -26,18 +26,36 @@ void InitSqlDb()
 
 }
 
+void RegisterJwtTokenServices()
+{
+    // configure strongly typed settings object
+    services.Configure<JwtSettings>(configuration.GetSection("JwtSettings"));
+
+    services.AddTransient<TokenService>();
+}
+
+void RegisterRepositories()
+{
+    services.AddTransient<IAuthRepository, AuthSqlRepository>();
+    services.AddTransient<IUserRepository, UserSqlRepository>();
+    services.AddTransient<ITeguRepository, TeguSqlRepository>();
+}
+
+void RegisterManagers()
+{
+    services.AddTransient<AuthenticationManager>();
+}
+
+#endregion
+
+#region App Service Injections
+
 InitSqlDb();
 
-// configure strongly typed settings object
-services.Configure<JwtSettings>(configuration.GetSection("JwtSettings"));
+RegisterJwtTokenServices();
 
-services.AddTransient<TokenService>();
-
-services.AddTransient<AuthenticationManager>();
-
-services.AddTransient<IAuthRepository, AuthSqlRepository>();
-services.AddTransient<IUserRepository, UserSqlRepository>();
-services.AddTransient<ITeguRepository, TeguSqlRepository>();
+RegisterRepositories();
+RegisterManagers();
 
 services.AddControllers().AddJsonOptions(o =>
 {

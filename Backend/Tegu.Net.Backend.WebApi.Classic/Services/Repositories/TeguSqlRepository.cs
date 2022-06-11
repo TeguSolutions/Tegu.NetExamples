@@ -7,11 +7,11 @@ namespace Tegu.Net.Backend.WebApi.Classic.Services.Repositories;
 public class TeguSqlRepository : ITeguRepository
 {
     private readonly ILogger<TeguSqlRepository> _logger;
-    private readonly IDbContextFactory<TeguSqlContext> _factory;
+    private readonly IDbContextFactory<TeguSqlContext> _dbFactory;
 
-    public TeguSqlRepository(ILogger<TeguSqlRepository> logger, IDbContextFactory<TeguSqlContext> factory)
+    public TeguSqlRepository(ILogger<TeguSqlRepository> logger, IDbContextFactory<TeguSqlContext> dbFactory)
     {
         _logger = logger ?? throw new ArgumentNullException(nameof(logger));
-        _factory = factory ?? throw new ArgumentNullException(nameof(factory));
+        _dbFactory = dbFactory ?? throw new ArgumentNullException(nameof(dbFactory));
     }
 }
