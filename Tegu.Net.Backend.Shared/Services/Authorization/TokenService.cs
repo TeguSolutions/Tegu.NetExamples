@@ -92,7 +92,7 @@ public class TokenService
         }
     }
 
-    public RefreshToken GenerateRefreshToken(Guid userId, string ipAddress)
+    public RefreshToken GenerateRefreshToken(Guid userId)
     {
         // generate token that is valid for 7 days
         var secureRandomNumberGenerator =  RandomNumberGenerator.Create();
@@ -103,7 +103,6 @@ public class TokenService
             Token = Convert.ToBase64String(randomBytes),
             ExpiresAt = DateTimeOffset.UtcNow.AddDays(_appSettings.RefreshTokenTTL),
             CreatedAt = DateTimeOffset.UtcNow,
-            CreatedByIp = ipAddress,
             UserId = userId
         };
 
