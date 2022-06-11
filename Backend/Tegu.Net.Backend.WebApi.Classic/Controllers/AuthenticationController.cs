@@ -19,14 +19,14 @@ public class AuthenticationController : ControllerBase
         _authenticationManager = authenticationManager ?? throw new ArgumentNullException(nameof(authenticationManager));
     }
 
-    [HttpPost]
+    [HttpPost("login")]
     public async Task<IActionResult> Authenticate(AuthenticateRequest request)
     {
         var result = await _authenticationManager.Authenticate(request);
         return result.IsSuccess() ? Ok(result) : BadRequest(result);
     }
 
-    [HttpPost]
+    [HttpPost("refreshtoken")]
     public async Task<IActionResult> RefreshToken(AuthRefreshTokenRequest request)
     {
         var result = await _authenticationManager.RefreshToken(request);

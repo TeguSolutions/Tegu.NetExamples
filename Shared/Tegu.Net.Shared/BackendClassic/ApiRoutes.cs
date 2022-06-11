@@ -4,7 +4,7 @@ public static class ApiRoutes
 {
     public static class Authentication
     {
-        public const string ControllerRouteTemplate = "api/authorization";
-        public static string ControllerUri { get; } = "api/authorization/";
+        public const string ControllerRouteTemplate = "api/auth";
+        public static string ControllerUri { get; } = "api/auth/";
     }
 }

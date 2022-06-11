@@ -5,6 +5,6 @@ namespace Tegu.Net.Backend.Shared.DataLayer;
 
 public interface IUserRepository
 {
-    Task<Result<User>> GetById(Guid id, bool? roles = null);
+    Task<Result<User>> GetById(Guid userId, bool? roles = null);
     Task<Result<User>> GetByEmail(string email, bool? roles = null);
 }

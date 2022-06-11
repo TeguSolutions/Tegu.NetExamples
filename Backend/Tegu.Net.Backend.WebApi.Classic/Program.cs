@@ -1,5 +1,12 @@
+using System.Text.Json;
+using System.Text.Json.Serialization;
 using Microsoft.EntityFrameworkCore;
 using Tegu.Net.Backend.Data.SQL.Context;
+using Tegu.Net.Backend.Shared.DataLayer;
+using Tegu.Net.Backend.Shared.Services;
+using Tegu.Net.Backend.Shared.Services.Authorization;
+using Tegu.Net.Backend.WebApi.Classic.Managers;
+using Tegu.Net.Backend.WebApi.Classic.Services.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
 var configuration = builder.Configuration;
@@ -21,8 +28,24 @@ void InitSqlDb()
 
 InitSqlDb();
 
+// configure strongly typed settings object
+services.Configure<JwtSettings>(configuration.GetSection("JwtSettings"));
 
-services.AddControllers();
+services.AddTransient<TokenService>();
+
+services.AddTransient<AuthenticationManager>();
+
+services.AddTransient<IAuthRepository, AuthSqlRepository>();
+services.AddTransient<IUserRepository, UserSqlRepository>();
+services.AddTransient<ITeguRepository, TeguSqlRepository>();
+
+services.AddControllers().AddJsonOptions(o =>
+{
+    o.JsonSerializerOptions.PropertyNamingPolicy = JsonNamingPolicy.CamelCase;
+    o.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles;
+    o.JsonSerializerOptions.WriteIndented = true;
+});
+
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 services.AddEndpointsApiExplorer();
 services.AddSwaggerGen();
