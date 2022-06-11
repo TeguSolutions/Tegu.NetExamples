@@ -16,6 +16,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\Tegu.Net.Backend.Data.SQL\Tegu.Net.Backend.Data.SQL.csproj" />
+    <ProjectReference Include="..\..\Tegu.Net.Backend.Shared\Tegu.Net.Backend.Shared.csproj" />
   </ItemGroup>
 
   <ItemGroup>

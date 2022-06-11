@@ -6,4 +6,9 @@
     <Nullable>disable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Shared\Tegu.Net.Shared\Tegu.Net.Shared.csproj" />
+    <ProjectReference Include="..\Tegu.Net.Backend.Data.SQL\Tegu.Net.Backend.Data.SQL.csproj" />
+  </ItemGroup>
+
 </Project>
