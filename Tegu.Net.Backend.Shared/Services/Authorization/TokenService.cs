@@ -13,12 +13,12 @@ namespace Tegu.Net.Backend.Shared.Services.Authorization;
 public class TokenService
 {
     private readonly ILogger<TokenService> _logger;
-    private readonly AppSettings _appSettings;
+    private readonly JwtSettings _jwtSettings;
 
-    public TokenService(ILogger<TokenService> logger, IOptions<AppSettings> appSettings)
+    public TokenService(ILogger<TokenService> logger, IOptions<JwtSettings> appSettings)
     {
         _logger = logger;
-        _appSettings = appSettings.Value;
+        _jwtSettings = appSettings.Value;
     }
 
     public string GenerateJwtToken(User user)
@@ -38,14 +38,14 @@ public class TokenService
             }
 
             var tokenHandler = new JwtSecurityTokenHandler();
-            var key = Encoding.ASCII.GetBytes(_appSettings.Secret);
+            var key = Encoding.ASCII.GetBytes(_jwtSettings.Secret);
             var tokenDescriptor = new SecurityTokenDescriptor
             {
                 Subject = claimsIdentity,
 
                 // No whitespaces!!
                 Issuer = "TeguDotNetExamplesBackend",
-                Expires = DateTime.UtcNow.AddMinutes(_appSettings.JwtTokenTTL),
+                Expires = DateTime.UtcNow.AddMinutes(_jwtSettings.JwtTokenTTLMinutes),
                 SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)
             };
 
@@ -67,7 +67,7 @@ public class TokenService
         try
         {
             var tokenHandler = new JwtSecurityTokenHandler();
-            var key = Encoding.ASCII.GetBytes(_appSettings.Secret);
+            var key = Encoding.ASCII.GetBytes(_jwtSettings.Secret);
 
             tokenHandler.ValidateToken(token, new TokenValidationParameters
             {
@@ -101,7 +101,7 @@ public class TokenService
         var refreshToken = new RefreshToken
         {
             Token = Convert.ToBase64String(randomBytes),
-            ExpiresAt = DateTimeOffset.UtcNow.AddDays(_appSettings.RefreshTokenTTL),
+            ExpiresAt = DateTimeOffset.UtcNow.AddDays(_jwtSettings.RefreshTokenTTLDays),
             CreatedAt = DateTimeOffset.UtcNow,
             UserId = userId
         };

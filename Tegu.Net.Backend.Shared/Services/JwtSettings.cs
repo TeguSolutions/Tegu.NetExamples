@@ -1,12 +1,12 @@
 namespace Tegu.Net.Backend.Shared.Services;
 
-public class AppSettings
+public class JwtSettings
 {
     public string Secret { get; set; }
 
     // JwtToken Time to Live (in minutes)
-    public int JwtTokenTTL { get; set; }
+    public int JwtTokenTTLMinutes { get; set; }
 
     // RefreshToken Time to Live (in days)
-    public int RefreshTokenTTL { get; set; }
+    public int RefreshTokenTTLDays { get; set; }
 }
