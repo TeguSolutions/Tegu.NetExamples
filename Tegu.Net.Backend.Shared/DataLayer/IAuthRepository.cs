@@ -8,5 +8,5 @@ public interface IAuthRepository
     Task<Result> AddRefreshToken(RefreshToken refreshToken);
     Task<Result<RefreshToken>> GetRefreshTokenById(Guid refreshTokenId);
     Task<Result<RefreshToken>> GetRefreshTokenByToken(string refreshToken);
-    Task<Result> DeleteRefreshToken(RefreshToken refreshToken);
+    Task<Result> DeleteRefreshToken(Guid refreshTokenId);
 }

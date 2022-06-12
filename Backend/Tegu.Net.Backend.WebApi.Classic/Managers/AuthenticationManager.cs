@@ -79,7 +79,7 @@ public class AuthenticationManager
             var jwtToken = _tokenService.GenerateJwtToken(user);
 
             // Step 4: Delete the old, add the new Refresh Token
-            var removeRefreshTokenResult = await _authRepo.DeleteRefreshToken(oldRefreshToken);
+            var removeRefreshTokenResult = await _authRepo.DeleteRefreshToken(oldRefreshToken.Id);
             if (!removeRefreshTokenResult.IsSuccess())
             {
                 // Ignore this case..

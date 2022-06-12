@@ -66,14 +66,16 @@ public class AuthSqlRepository : IAuthRepository
         }
     }
 
-    public async Task<Result> DeleteRefreshToken(RefreshToken refreshToken)
+    public async Task<Result> DeleteRefreshToken(Guid refreshTokenId)
     {
         try
         {
             var dbContext = await _dbFactory.CreateDbContextAsync();
 
-            // Todo: ?? probably not good
-            //var refreshToken = await dbContext.RefreshTokens.FirstOrDefaultAsync()
+            var refreshToken = await dbContext.RefreshTokens.SingleOrDefaultAsync(q => q.Id == refreshTokenId);
+            if (refreshToken is null)
+                return Result.Ok();
+
             dbContext.RefreshTokens.Remove(refreshToken);
             await dbContext.SaveChangesAsync();
             return Result.Ok();
