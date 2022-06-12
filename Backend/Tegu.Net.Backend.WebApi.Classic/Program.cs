@@ -1,6 +1,9 @@
+using System.Text;
 using System.Text.Json;
 using System.Text.Json.Serialization;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
 using Tegu.Net.Backend.Data.SQL.Context;
 using Tegu.Net.Backend.Shared.DataLayer;
 using Tegu.Net.Backend.Shared.Services;
@@ -58,6 +61,29 @@ RegisterJwtTokenServices();
 RegisterRepositories();
 RegisterManagers();
 
+// Adding Authentication
+builder.Services.AddAuthentication(options =>
+    {
+        options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+        options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+        options.DefaultScheme = JwtBearerDefaults.AuthenticationScheme;
+    })
+
+// Adding Jwt Bearer
+    .AddJwtBearer(options =>
+    {
+        options.SaveToken = false;
+        options.RequireHttpsMetadata = false;
+        options.TokenValidationParameters = new TokenValidationParameters
+        {
+            ValidateIssuer = false,
+            ValidateAudience = false,
+            //ValidAudience = configuration["JwtSettings:ValidAudience"],
+            //ValidIssuer = configuration["JwtSettings:ValidIssuer"],
+            IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(configuration["JwtSettings:JwtSecret"]))
+        };
+    });
+
 services.AddControllers().AddJsonOptions(o =>
 {
     o.JsonSerializerOptions.PropertyNamingPolicy = JsonNamingPolicy.CamelCase;
@@ -84,6 +110,7 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();

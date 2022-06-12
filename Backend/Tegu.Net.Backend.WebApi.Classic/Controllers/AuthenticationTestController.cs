@@ -55,7 +55,7 @@ public class AuthenticationTestController : ControllerBase
         if (string.IsNullOrWhiteSpace(request?.Message))
             return BadRequest("Invalid model?");
 
-        return Ok("Role Based Authentication as Client was successfull!");
+        return Ok("Anonymous check was successfull!");
     }
 }
 
