@@ -35,6 +35,13 @@ public static class ApiRoutes
 
         #endregion
 
+        #region AuthRoleAny
+
+        public const string AuthRoleAny = "authroleany";
+        public static Uri AuthRoleAnyUri => new(baseUri + ControllerUri + AuthRoleAny);
+
+        #endregion
+
         #region AuthAnonymous
 
         public const string AuthAnonymous = "authanonymous";

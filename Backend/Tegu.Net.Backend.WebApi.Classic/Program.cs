@@ -7,6 +7,7 @@ using Tegu.Net.Backend.Shared.Services;
 using Tegu.Net.Backend.Shared.Services.Authorization;
 using Tegu.Net.Backend.WebApi.Classic.Managers;
 using Tegu.Net.Backend.WebApi.Classic.Services.Repositories;
+using Tegu.Net.Shared.BackendClassic;
 
 var builder = WebApplication.CreateBuilder(args);
 var configuration = builder.Configuration;
@@ -86,6 +87,12 @@ app.UseHttpsRedirection();
 app.UseAuthorization();
 
 app.MapControllers();
+
+#endregion
+
+#region Data/Definitions Init
+
+ApiRoutes.Initialize("https://localhost:44318/");
 
 #endregion
 

@@ -23,7 +23,7 @@ public class AuthenticationController : ControllerBase
 
     [AllowAnonymous]
     [HttpPost(ApiRoutes.Authentication.Login)]
-    public async Task<IActionResult> Login(LoginRequest request)
+    public async Task<IActionResult> Login(AuthLoginRequest request)
     {
         var result = await _authenticationManager.Authenticate(request);
         return result.IsSuccess() ? Ok(result) : BadRequest(result);

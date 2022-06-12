@@ -23,20 +23,20 @@ public class AuthenticationManager
         _tokenService = tokenService ?? throw new ArgumentNullException(nameof(tokenService));
     }
 
-    public async Task<Result<LoginResponse>> Authenticate(LoginRequest request)
+    public async Task<Result<AuthLoginResponse>> Authenticate(AuthLoginRequest request)
     {
         try
         {
             // Step 1: Get the user
             var userResult = await _userRepo.GetByEmail(request.Email, true);
             if (!userResult.IsSuccess())
-                return Result<LoginResponse>.FailMessage("User was not found!");
+                return Result<AuthLoginResponse>.FailMessage("User was not found!");
 
             var user = userResult.Data;
 
             // Step 2: Validate the password
             if (!BCrypt.Net.BCrypt.Verify(request.Password, user.PasswordHash))
-                return Result<LoginResponse>.FailMessage("Username or password is incorrect!");
+                return Result<AuthLoginResponse>.FailMessage("Username or password is incorrect!");
 
             // Step 3: Generate new Jwt and Refresh tokens
             var jwtToken = _tokenService.GenerateJwtToken(user);
@@ -44,14 +44,14 @@ public class AuthenticationManager
 
             var refreshTokenAddResult = await _authRepo.AddRefreshToken(refreshToken);
             if (!refreshTokenAddResult.IsSuccess())
-                return Result<LoginResponse>.FailMessage("Server error...");
+                return Result<AuthLoginResponse>.FailMessage("Server error...");
 
-            return Result<LoginResponse>.OkData(new LoginResponse(jwtToken, refreshToken.Token));
+            return Result<AuthLoginResponse>.OkData(new AuthLoginResponse(jwtToken, refreshToken.Token));
         }
         catch (Exception e)
         {
             _logger.LogError(e);
-            return Result<LoginResponse>.FailMessage("Server error...");
+            return Result<AuthLoginResponse>.FailMessage("Server error...");
         }
 
     }
