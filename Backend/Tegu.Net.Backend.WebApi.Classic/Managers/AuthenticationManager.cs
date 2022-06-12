@@ -57,34 +57,42 @@ public class AuthenticationManager
 
     public async Task<Result<AuthRefreshTokenResponse>> RefreshToken(AuthRefreshTokenRequest request)
     {
-        // Step 1: Get the user
-        var userResult = await _userRepo.GetById(request.UserId, true);
-        if (!userResult.IsSuccess())
-            return Result<AuthRefreshTokenResponse>.FailMessage("User was not found!");
-
-        var user = userResult.Data;
-
-        // Step 2: Get the Refresh Token
-        var refreshTokenResult = await _authRepo.GetRefreshTokenByToken(request.RefreshToken);
-        if (!refreshTokenResult.IsSuccess())
-            return Result<AuthRefreshTokenResponse>.FailMessage("Refresh Token was not found!");
-
-        var oldRefreshToken = refreshTokenResult.Data;
-
-        // Step 3: Generate the new Jwt / Refresh Tokens
-        var newRefreshToken = _tokenService.GenerateRefreshToken(user.Id);
-        var jwtToken = _tokenService.GenerateJwtToken(user);
-
-        // Step 4: Delete the old, add the new Refresh Token
-        var removeRefreshTokenResult = await _authRepo.DeleteRefreshToken(oldRefreshToken);
-        if (!removeRefreshTokenResult.IsSuccess())
+        try
         {
-            // Ignore this case..
-        }
-        var addNewRefreshTokenResult = await _authRepo.AddRefreshToken(newRefreshToken);
-        if (!addNewRefreshTokenResult.IsSuccess())
-            return Result<AuthRefreshTokenResponse>.FailMessage("Server error...");
+            // Step 1: Get the user
+            var userResult = await _userRepo.GetById(request.UserId, true);
+            if (!userResult.IsSuccess())
+                return Result<AuthRefreshTokenResponse>.FailMessage("User was not found!");
 
-        return Result<AuthRefreshTokenResponse>.OkData(new AuthRefreshTokenResponse(jwtToken, newRefreshToken.Token));
+            var user = userResult.Data;
+
+            // Step 2: Get the Refresh Token
+            var refreshTokenResult = await _authRepo.GetRefreshTokenByToken(request.RefreshToken);
+            if (!refreshTokenResult.IsSuccess())
+                return Result<AuthRefreshTokenResponse>.FailMessage("Refresh Token was not found!");
+
+            var oldRefreshToken = refreshTokenResult.Data;
+
+            // Step 3: Generate the new Jwt / Refresh Tokens
+            var newRefreshToken = _tokenService.GenerateRefreshToken(user.Id);
+            var jwtToken = _tokenService.GenerateJwtToken(user);
+
+            // Step 4: Delete the old, add the new Refresh Token
+            var removeRefreshTokenResult = await _authRepo.DeleteRefreshToken(oldRefreshToken);
+            if (!removeRefreshTokenResult.IsSuccess())
+            {
+                // Ignore this case..
+            }
+            var addNewRefreshTokenResult = await _authRepo.AddRefreshToken(newRefreshToken);
+            if (!addNewRefreshTokenResult.IsSuccess())
+                return Result<AuthRefreshTokenResponse>.FailMessage("Server error...");
+
+            return Result<AuthRefreshTokenResponse>.OkData(new AuthRefreshTokenResponse(jwtToken, newRefreshToken.Token));
+        }
+        catch (Exception e)
+        {
+            _logger.LogError(e);
+            return Result<AuthRefreshTokenResponse>.FailMessage("Server error...");
+        }
     }
 }
