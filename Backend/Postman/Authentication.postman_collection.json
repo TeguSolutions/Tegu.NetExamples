@@ -1,0 +1,143 @@
+{
+	"info": {
+		"_postman_id": "3e06aec2-cc0a-4225-9e86-32beb0b37ab6",
+		"name": "Authentication",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "7571877"
+	},
+	"item": [
+		{
+			"name": "Login (As Tegu)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var json = pm.response.json();\r",
+							"\r",
+							"pm.globals.set(\"jwtToken\", json.data.jwtToken);\r",
+							"pm.globals.set(\"refreshToken\", json.data.refreshToken);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"Email\": \"admintegu@tegu.net\",\r\n    \"Password\": \"admintegu@tegu.net\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{host}}/auth/login",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"auth",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Login (As Client)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var json = pm.response.json();\r",
+							"\r",
+							"pm.globals.set(\"jwtToken\", json.data.jwtToken);\r",
+							"pm.globals.set(\"refreshToken\", json.data.refreshToken);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"Email\": \"bwtegu@tegu.net\",\r\n    \"Password\": \"bwtegu@tegu.net\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{host}}/auth/login",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"auth",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "RefreshToken",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var json = pm.response.json();\r",
+							"\r",
+							"pm.globals.set(\"jwtToken\", json.data.jwtToken);\r",
+							"pm.globals.set(\"refreshToken\", json.data.refreshToken);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{jwtToken}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"RefreshToken\": \"{{refreshToken}}\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{host}}/auth/refreshtoken",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"auth",
+						"refreshtoken"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

@@ -1,0 +1,195 @@
+{
+	"info": {
+		"_postman_id": "0ef4ee6c-3ef6-4e3f-8cb0-830336242cbf",
+		"name": "_Authentication Test",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "7571877"
+	},
+	"item": [
+		{
+			"name": "AuthBase",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{jwtToken}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"Message\": \"Basic Auth Test\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{host}}/authtest/authbase",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"authtest",
+						"authbase"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "AuthRoleTegu",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{jwtToken}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"Message\": \"Role Auth -Tegu- Test\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{host}}/authtest/authroletegu",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"authtest",
+						"authroletegu"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "AuthRoleClient",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{jwtToken}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"Message\": \"Role Auth -Client- Test\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{host}}/authtest/authroleclient",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"authtest",
+						"authroleclient"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "AuthRoleAny",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{jwtToken}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"Message\": \"Role Auth -Any- Test\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{host}}/authtest/authroleany",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"authtest",
+						"authroleany"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "AuthAnonymous",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{jwtToken}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"Message\": \"Anonymous test with Token\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{host}}/authtest/authanonymous",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"authtest",
+						"authanonymous"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

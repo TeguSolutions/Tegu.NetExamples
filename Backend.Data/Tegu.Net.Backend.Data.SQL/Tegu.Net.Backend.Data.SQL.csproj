@@ -25,7 +25,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Shared\Tegu.Net.Shared\Tegu.Net.Shared.csproj" />
+    <ProjectReference Include="..\..\Shared\Tegu.Net.Shared\Tegu.Net.Shared.csproj" />
   </ItemGroup>
 
 </Project>

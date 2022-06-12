@@ -21,9 +21,17 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Tegu.Net.Client.Maui", "Cli
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Backend.Data", "Backend.Data", "{0F63E1D9-4A6D-43AE-BBC1-9472C56B73E5}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Tegu.Net.Backend.Data.SQL", "Tegu.Net.Backend.Data.SQL\Tegu.Net.Backend.Data.SQL.csproj", "{D6B7E531-BDAC-46C7-B09E-7D9993E121EE}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Postman", "Postman", "{94C7C167-C27E-48AA-815C-DFD240C54BB8}"
+	ProjectSection(SolutionItems) = preProject
+		C:\Users\satuk\Desktop\Authentication.postman_collection.json = C:\Users\satuk\Desktop\Authentication.postman_collection.json
+		C:\Users\satuk\Desktop\Dev Local IIS.postman_environment.json = C:\Users\satuk\Desktop\Dev Local IIS.postman_environment.json
+		C:\Users\satuk\Desktop\workspace.postman_globals.json = C:\Users\satuk\Desktop\workspace.postman_globals.json
+		C:\Users\satuk\Desktop\_AuthenticationTest.postman_collection.json = C:\Users\satuk\Desktop\_AuthenticationTest.postman_collection.json
+	EndProjectSection
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Tegu.Net.Backend.Shared", "Tegu.Net.Backend.Shared\Tegu.Net.Backend.Shared.csproj", "{4AC97096-47BD-4122-901B-30222CAB6169}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Tegu.Net.Backend.Shared", "Backend\Tegu.Net.Backend.Shared\Tegu.Net.Backend.Shared.csproj", "{68615049-3FFC-424A-8A7B-87ED2EC25D7C}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Tegu.Net.Backend.Data.SQL", "Backend.Data\Tegu.Net.Backend.Data.SQL\Tegu.Net.Backend.Data.SQL.csproj", "{EDE09E5C-C082-420B-8685-29B066E71A16}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -53,14 +61,14 @@ Global
 		{4FB229AF-B510-400A-BD2E-E5B1332A0F4E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4FB229AF-B510-400A-BD2E-E5B1332A0F4E}.Release|Any CPU.Build.0 = Release|Any CPU
 		{4FB229AF-B510-400A-BD2E-E5B1332A0F4E}.Release|Any CPU.Deploy.0 = Release|Any CPU
-		{D6B7E531-BDAC-46C7-B09E-7D9993E121EE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{D6B7E531-BDAC-46C7-B09E-7D9993E121EE}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{D6B7E531-BDAC-46C7-B09E-7D9993E121EE}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{D6B7E531-BDAC-46C7-B09E-7D9993E121EE}.Release|Any CPU.Build.0 = Release|Any CPU
-		{4AC97096-47BD-4122-901B-30222CAB6169}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{4AC97096-47BD-4122-901B-30222CAB6169}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{4AC97096-47BD-4122-901B-30222CAB6169}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{4AC97096-47BD-4122-901B-30222CAB6169}.Release|Any CPU.Build.0 = Release|Any CPU
+		{68615049-3FFC-424A-8A7B-87ED2EC25D7C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{68615049-3FFC-424A-8A7B-87ED2EC25D7C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{68615049-3FFC-424A-8A7B-87ED2EC25D7C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{68615049-3FFC-424A-8A7B-87ED2EC25D7C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EDE09E5C-C082-420B-8685-29B066E71A16}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EDE09E5C-C082-420B-8685-29B066E71A16}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EDE09E5C-C082-420B-8685-29B066E71A16}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EDE09E5C-C082-420B-8685-29B066E71A16}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -71,8 +79,9 @@ Global
 		{2E0EC5A3-B3ED-4C2B-ABC2-B56F0E1FC200} = {D97C4A6F-7220-4ED6-9CBB-D3BF5E6CF22F}
 		{9A036A0C-8BDC-4BB2-BEAA-4063AE335450} = {FFEBF7F9-78FF-41D1-9DF4-C8E1234BBB28}
 		{4FB229AF-B510-400A-BD2E-E5B1332A0F4E} = {D97C4A6F-7220-4ED6-9CBB-D3BF5E6CF22F}
-		{D6B7E531-BDAC-46C7-B09E-7D9993E121EE} = {0F63E1D9-4A6D-43AE-BBC1-9472C56B73E5}
-		{4AC97096-47BD-4122-901B-30222CAB6169} = {A62A54C6-069C-4DA8-BEEE-CB234366B76A}
+		{94C7C167-C27E-48AA-815C-DFD240C54BB8} = {A62A54C6-069C-4DA8-BEEE-CB234366B76A}
+		{68615049-3FFC-424A-8A7B-87ED2EC25D7C} = {A62A54C6-069C-4DA8-BEEE-CB234366B76A}
+		{EDE09E5C-C082-420B-8685-29B066E71A16} = {0F63E1D9-4A6D-43AE-BBC1-9472C56B73E5}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {22F8C594-09DC-4931-A505-4C7796E79F36}

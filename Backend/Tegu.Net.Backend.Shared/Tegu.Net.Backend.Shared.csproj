@@ -7,8 +7,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Shared\Tegu.Net.Shared\Tegu.Net.Shared.csproj" />
-    <ProjectReference Include="..\Tegu.Net.Backend.Data.SQL\Tegu.Net.Backend.Data.SQL.csproj" />
+    <ProjectReference Include="..\..\Backend.Data\Tegu.Net.Backend.Data.SQL\Tegu.Net.Backend.Data.SQL.csproj" />
+    <ProjectReference Include="..\..\Shared\Tegu.Net.Shared\Tegu.Net.Shared.csproj" />
   </ItemGroup>
 
 </Project>
