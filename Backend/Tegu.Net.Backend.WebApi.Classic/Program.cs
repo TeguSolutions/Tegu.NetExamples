@@ -9,6 +9,7 @@ using Tegu.Net.Backend.Shared.DataLayer;
 using Tegu.Net.Backend.Shared.Services;
 using Tegu.Net.Backend.Shared.Services.Authorization;
 using Tegu.Net.Backend.WebApi.Classic.Managers;
+using Tegu.Net.Backend.WebApi.Classic.Services;
 using Tegu.Net.Backend.WebApi.Classic.Services.Repositories;
 using Tegu.Net.Shared.BackendClassic;
 
@@ -35,6 +36,7 @@ void RegisterJwtTokenServices()
     // configure strongly typed settings object
     services.Configure<JwtSettings>(configuration.GetSection("JwtSettings"));
 
+    services.AddTransient<SecurityContextService>();
     services.AddTransient<TokenService>();
 }
 
@@ -68,7 +70,6 @@ builder.Services.AddAuthentication(options =>
         options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
         options.DefaultScheme = JwtBearerDefaults.AuthenticationScheme;
     })
-
 // Adding Jwt Bearer
     .AddJwtBearer(options =>
     {

@@ -33,6 +33,9 @@ public class AuthenticationController : ControllerBase
     [HttpPost(ApiRoutes.Authentication.RefreshToken)]
     public async Task<IActionResult> RefreshToken(AuthRefreshTokenRequest request)
     {
+        var headers = Request.Headers;
+        var jwt = headers.Authorization.First(q => q.StartsWith("Bearer"));
+        var jwt2 = jwt.Replace("Bearer ", "");
         var result = await _authenticationManager.RefreshToken(request);
         return result.IsSuccess() ? Ok(result) : BadRequest(result);
     }
