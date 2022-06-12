@@ -34,7 +34,7 @@ public class AuthSqlRepository : IAuthRepository
         }
     }
 
-    public async Task<Result<RefreshToken>> GetRefreshToken(Guid refreshTokenId)
+    public async Task<Result<RefreshToken>> GetRefreshTokenById(Guid refreshTokenId)
     {
         try
         {
@@ -42,6 +42,22 @@ public class AuthSqlRepository : IAuthRepository
 
             var refreshToken = await dbContext.RefreshTokens.FirstAsync(q => q.Id == refreshTokenId);
             return Result<RefreshToken>.OkData(refreshToken);
+        }
+        catch (Exception e)
+        {
+            _logger.LogError(e);
+            return Result<RefreshToken>.Fail();
+        }
+    }
+
+    public async Task<Result<RefreshToken>> GetRefreshTokenByToken(string refreshToken)
+    {
+        try
+        {
+            var dbContext = await _dbFactory.CreateDbContextAsync();
+
+            var dbRefreshToken = await dbContext.RefreshTokens.FirstAsync(q => q.Token == refreshToken);
+            return Result<RefreshToken>.OkData(dbRefreshToken);
         }
         catch (Exception e)
         {
