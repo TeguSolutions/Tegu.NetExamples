@@ -1,8 +1,8 @@
 ﻿namespace Tegu.Net.Shared.Domains.Authentication.Requests;
 
-public class AuthenticateRequest
+public class LoginRequest
 {
-    public AuthenticateRequest(string email, string password)
+    public LoginRequest(string email, string password)
     {
         Email = email;
         Password = password;

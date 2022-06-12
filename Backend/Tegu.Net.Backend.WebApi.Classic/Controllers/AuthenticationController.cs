@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Tegu.Net.Backend.WebApi.Classic.Managers;
 using Tegu.Net.Shared.BackendClassic;
 using Tegu.Net.Shared.Domains.Authentication.Requests;
@@ -6,6 +7,7 @@ using Tegu.Net.Shared.Helper;
 
 namespace Tegu.Net.Backend.WebApi.Classic.Controllers;
 
+[Authorize]
 [ApiController]
 [Route(ApiRoutes.Authentication.ControllerRouteTemplate)]
 public class AuthenticationController : ControllerBase
@@ -19,14 +21,16 @@ public class AuthenticationController : ControllerBase
         _authenticationManager = authenticationManager ?? throw new ArgumentNullException(nameof(authenticationManager));
     }
 
-    [HttpPost("login")]
-    public async Task<IActionResult> Authenticate(AuthenticateRequest request)
+    [AllowAnonymous]
+    [HttpPost(ApiRoutes.Authentication.Login)]
+    public async Task<IActionResult> Login(LoginRequest request)
     {
         var result = await _authenticationManager.Authenticate(request);
         return result.IsSuccess() ? Ok(result) : BadRequest(result);
     }
 
-    [HttpPost("refreshtoken")]
+    [AllowAnonymous]
+    [HttpPost(ApiRoutes.Authentication.RefreshToken)]
     public async Task<IActionResult> RefreshToken(AuthRefreshTokenRequest request)
     {
         var result = await _authenticationManager.RefreshToken(request);

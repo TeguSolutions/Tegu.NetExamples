@@ -1,8 +1,8 @@
 ﻿namespace Tegu.Net.Shared.Domains.Authentication.Responses;
 
-public class AuthenticateResponse
+public class LoginResponse
 {
-    public AuthenticateResponse(string jwtToken, string refreshToken)
+    public LoginResponse(string jwtToken, string refreshToken)
     {
         JwtToken = jwtToken;
         RefreshToken = refreshToken;
