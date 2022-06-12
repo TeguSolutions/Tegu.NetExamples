@@ -25,11 +25,11 @@ public class SecurityContextService
 
             var jwt = bearer.Split(" ").Last();
 
-            var (isValid, userId) = _tokenService.ValidateJwtToken(jwt);
+            var (isValid, userId, roles) = _tokenService.ParseJwtToken(jwt);
             if (!isValid)
                 return SecurityContext.Empty;
 
-            return new SecurityContext(userId.Value);
+            return new SecurityContext(userId.Value, roles);
         }
         catch (Exception e)
         {

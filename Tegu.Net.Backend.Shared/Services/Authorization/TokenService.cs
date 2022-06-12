@@ -92,6 +92,32 @@ public class TokenService
         }
     }
 
+    public (bool isValid, Guid? userId, List<string> roles) ParseJwtToken(string jwtToken)
+    {
+        try
+        {
+            if (string.IsNullOrWhiteSpace(jwtToken))
+                return (false, null, null);
+
+            var jwtSecurityToken = new JwtSecurityTokenHandler().ReadJwtToken(jwtToken);
+
+            //var userIdText = jwtSecurityToken.Claims.First(c => c.Type == ClaimTypes.NameIdentifier).Value;
+            var userIdText = jwtSecurityToken.Claims.First(c => c.Type == "nameid").Value;
+            var userId = Guid.Parse(userIdText);
+
+            //var roleClaims = jwtSecurityToken.Claims.Where(c => c.Type == ClaimTypes.Role);
+            var roleClaims = jwtSecurityToken.Claims.Where(c => c.Type == "role");
+            var roles = roleClaims.Select(c => c.Value).ToList();
+
+            return (true, userId, roles);
+        }
+        catch (Exception e)
+        {
+            _logger.LogError(e);
+            return (false, null, null);
+        }
+    }
+
     public RefreshToken GenerateRefreshToken(Guid userId)
     {
         // generate token that is valid for 7 days

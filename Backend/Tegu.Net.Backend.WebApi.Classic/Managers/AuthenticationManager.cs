@@ -1,4 +1,5 @@
 ﻿using Tegu.Net.Backend.Shared.DataLayer;
+using Tegu.Net.Backend.Shared.Helpers;
 using Tegu.Net.Backend.Shared.Services.Authorization;
 using Tegu.Net.Shared.Domains.Authentication.Requests;
 using Tegu.Net.Shared.Domains.Authentication.Responses;
@@ -55,12 +56,12 @@ public class AuthenticationManager
         }
     }
 
-    public async Task<Result<AuthRefreshTokenResponse>> RefreshToken(AuthRefreshTokenRequest request)
+    public async Task<Result<AuthRefreshTokenResponse>> RefreshToken(SecurityContext context, AuthRefreshTokenRequest request)
     {
         try
         {
             // Step 1: Get the user
-            var userResult = await _userRepo.GetById(request.UserId, true);
+            var userResult = await _userRepo.GetById(context.UserId, true);
             if (!userResult.IsSuccess())
                 return Result<AuthRefreshTokenResponse>.FailMessage("User was not found!");
 

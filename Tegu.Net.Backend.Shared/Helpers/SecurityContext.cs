@@ -13,20 +13,8 @@ public class SecurityContext
     }
 
     /// <summary>
-    /// For Web Api Client
+    /// For Web Api
     /// </summary>
-    /// <param name="userId"></param>
-    public SecurityContext(Guid userId)
-    {
-        UserId = userId;
-        Roles = new List<string>();
-    }
-
-    /// <summary>
-    /// For Web Api MediatR
-    /// </summary>
-    /// <param name="userId"></param>
-    /// <param name="roles"></param>
     public SecurityContext(Guid userId, List<string> roles)
     {
         UserId = userId;

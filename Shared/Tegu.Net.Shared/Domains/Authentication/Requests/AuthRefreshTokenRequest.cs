@@ -2,12 +2,10 @@
 
 public class AuthRefreshTokenRequest
 {
-    public AuthRefreshTokenRequest(Guid userId, string refreshToken)
+    public AuthRefreshTokenRequest(string refreshToken)
     {
-        UserId = userId;
         RefreshToken = refreshToken;
     }
 
-    public Guid UserId { get; }
     public string RefreshToken { get; }
 }
