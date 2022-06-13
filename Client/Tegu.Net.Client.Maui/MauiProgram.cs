@@ -1,4 +1,5 @@
 ﻿using CommunityToolkit.Maui;
+using Tegu.Net.Client.Maui.Pages;
 
 namespace Tegu.Net.Client.Maui
 {
@@ -15,6 +16,27 @@ namespace Tegu.Net.Client.Maui
                     fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
                     fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
                 });
+
+            var s = builder.Services;
+
+            #region Page and VM Registrations
+
+            s.AddTransient<MainPage>();
+            s.AddTransient<MainVM>();
+
+            s.AddTransient<ControlsPage>();
+            s.AddTransient<ControlsVM>();
+
+            s.AddTransient<MVVMOnePage>();
+            s.AddTransient<MVVMOneVM>();
+
+            s.AddTransient<MVVMTwoPage>();
+            s.AddTransient<MVVMTwoVM>();
+
+            s.AddTransient<NavigationAbsolutePage>();
+            s.AddTransient<NavigationAbsoluteVM>();
+
+            #endregion
 
             return builder.Build();
         }
