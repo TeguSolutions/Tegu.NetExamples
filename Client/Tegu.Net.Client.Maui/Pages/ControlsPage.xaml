@@ -10,10 +10,13 @@
 
     <Grid ColumnDefinitions="1*, 1*" RowDefinitions="1*, 30, 30" Padding="5">
 
-        <ListView Grid.Column="0" ItemsSource="{Binding ListViewTegus}" SelectedItem="{Binding ListViewSelectedTegu}">
+        <!-- Col 0: ListView -->
+
+        <ListView Grid.Column="0" Grid.Row="0" Margin="0,0,10,0"
+                  ItemsSource="{Binding ListViewTegus}" SelectedItem="{Binding ListViewSelectedTegu}">
 
             <ListView.Header>
-                <StackLayout BackgroundColor="{StaticResource Primary}" HeightRequest="30">
+                <StackLayout BackgroundColor="{StaticResource Yellow100Accent}" HeightRequest="30">
                     <Label Margin="10, 6, 0, 0" 
                            Text="Tegu List Header"
                            FontSize="12"
@@ -53,6 +56,35 @@
             <Label Margin="0,0,6,0" Text="Selected Tegu:"/>
             <Label TextColor="Lime" Text="{Binding ListViewSelectedTegu.Name}"/>
         </HorizontalStackLayout>
+
+
+        <!-- Col 1: CollectionView -->
+        <CollectionView Grid.Column="1" Grid.Row="0" Margin="10,0,0,0"
+                        ItemsSource="{Binding CollectionViewTegus}" >
+            <CollectionView.ItemsLayout>
+                <!--<LinearItemsLayout Orientation="Vertical" ItemSpacing="2" />-->
+                <GridItemsLayout Orientation="Vertical" Span="2"/>
+            </CollectionView.ItemsLayout>
+
+            <CollectionView.Header>
+                <StackLayout BackgroundColor="{StaticResource Primary}" HeightRequest="30">
+                    <Label Margin="10, 6, 0, 0" 
+                           Text="Tegu Collection Header"
+                           FontSize="12"
+                           FontAttributes="Bold" />
+                </StackLayout>
+            </CollectionView.Header>
+
+            <CollectionView.Footer>
+                <StackLayout BackgroundColor="{StaticResource Primary}" HeightRequest="30">
+                    <Label Margin="10, 6, 0, 0" 
+                           Text="Tegu Collection Footer"
+                           FontSize="12"
+                           FontAttributes="Bold" />
+                </StackLayout>
+            </CollectionView.Footer>
+
+        </CollectionView>
 
     </Grid>
 

@@ -36,6 +36,10 @@ public partial class ControlsVM : ViewModelBase
     [ObservableProperty]
     private OwnedTeguDto listViewSelectedTegu;
 
+
     [ObservableProperty]
     private ObservableCollection<OwnedTeguDto> collectionViewTegus;
+
+    [ObservableProperty]
+    private OwnedTeguDto collectionViewSelectedTegu;
 }
