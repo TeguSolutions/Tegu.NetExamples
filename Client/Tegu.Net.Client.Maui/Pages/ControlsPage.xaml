@@ -2,8 +2,58 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:p="clr-namespace:Tegu.Net.Client.Maui.Pages"
+             xmlns:tegudto="clr-namespace:Tegu.Net.Shared.Domains.Tegu.Dtos;assembly=Tegu.Net.Shared"
              x:Class="Tegu.Net.Client.Maui.Pages.ControlsPage"
              x:DataType="p:ControlsVM"
              Title="Controls">
+
+
+    <Grid ColumnDefinitions="1*, 1*" RowDefinitions="1*, 30, 30" Padding="5">
+
+        <ListView Grid.Column="0" ItemsSource="{Binding ListViewTegus}" SelectedItem="{Binding ListViewSelectedTegu}">
+
+            <ListView.Header>
+                <StackLayout BackgroundColor="{StaticResource Primary}" HeightRequest="30">
+                    <Label Margin="10, 6, 0, 0" 
+                           Text="Tegu List Header"
+                           FontSize="12"
+                           FontAttributes="Bold" />
+                </StackLayout>
+            </ListView.Header>
+
+            <ListView.Footer>
+                <StackLayout BackgroundColor="{StaticResource Yellow100Accent}" HeightRequest="30">
+                    <Label Margin="10, 6, 0, 0" 
+                           Text="Tegu List Footer"
+                           FontSize="12"
+                           FontAttributes="Bold" />
+                </StackLayout>
+            </ListView.Footer>
+
+            <ListView.ItemTemplate>
+                <DataTemplate x:DataType="tegudto:OwnedTeguDto">
+                    <ViewCell>
+                        <Grid ColumnDefinitions="100, 1*" RowDefinitions="30, 30, 30" Padding="10">
+                            <Label Grid.Row="0" Grid.Column="0" Text="Name:"/>
+                            <Label Grid.Row="0" Grid.Column="1" Text="{Binding Name}"/>
+
+                            <Label Grid.Row="1" Grid.Column="0" Text="Type:"/>
+                            <Label Grid.Row="1" Grid.Column="1" Text="{Binding TeguType.Name}"/>
+
+                            <Label Grid.Row="2" Grid.Column="0" Text="Owner:"/>
+                            <Label Grid.Row="2" Grid.Column="1" Text="{Binding Owner.FullName}"/>
+                        </Grid>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+
+        </ListView>
+
+        <HorizontalStackLayout Grid.Column="0" Grid.Row="2">
+            <Label Margin="0,0,6,0" Text="Selected Tegu:"/>
+            <Label TextColor="Lime" Text="{Binding ListViewSelectedTegu.Name}"/>
+        </HorizontalStackLayout>
+
+    </Grid>
 
 </ContentPage>

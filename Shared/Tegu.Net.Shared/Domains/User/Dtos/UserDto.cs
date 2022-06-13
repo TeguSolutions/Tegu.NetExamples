@@ -13,4 +13,6 @@ public class UserDto
     public string Email { get; set; }
 
     public List<RoleDto> Roles { get; set; }
+
+    public string FullName => $"{FirstName} {LastName}";
 }
