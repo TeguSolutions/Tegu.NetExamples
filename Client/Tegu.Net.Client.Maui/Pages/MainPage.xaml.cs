@@ -1,4 +1,4 @@
-﻿namespace Tegu.Net.Client.Maui
+﻿namespace Tegu.Net.Client.Maui.Pages
 {
     public partial class MainPage : ContentPage
     {
