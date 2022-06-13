@@ -51,7 +51,7 @@ public partial class ControlsVM : ViewModelBase
     {
         CollectionViewIsRefreshing = true;
 
-        await Task.Delay(5000);
+        await Task.Delay(2000);
 
         CollectionViewIsRefreshing = false;
     }
