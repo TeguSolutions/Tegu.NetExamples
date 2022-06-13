@@ -59,47 +59,53 @@
 
 
         <!-- Col 1: CollectionView -->
-        <CollectionView Grid.Column="1" Grid.Row="0" Margin="10,0,0,0" SelectionMode="Single"
-                        ItemsSource="{Binding CollectionViewTegus}" SelectedItem="{Binding CollectionViewSelectedTegu}">
-            <CollectionView.ItemsLayout>
-                <!--<LinearItemsLayout Orientation="Vertical" ItemSpacing="2" />-->
-                <GridItemsLayout Orientation="Vertical" Span="2"/>
-            </CollectionView.ItemsLayout>
+        <RefreshView Grid.Column="1" Grid.Row="0" Margin="10,0,0,0" 
+                     IsRefreshing="{Binding CollectionViewIsRefreshing}" 
+                     Command="{Binding RefreshCollectionViewCommand}">
 
-            <CollectionView.Header>
-                <StackLayout BackgroundColor="{StaticResource Primary}" HeightRequest="30">
-                    <Label Margin="10, 6, 0, 0" 
-                           Text="Tegu Collection Header"
-                           FontSize="12"
-                           FontAttributes="Bold" />
-                </StackLayout>
-            </CollectionView.Header>
+            <CollectionView SelectionMode="Single"
+                            ItemsSource="{Binding CollectionViewTegus}" SelectedItem="{Binding CollectionViewSelectedTegu}">
+                <CollectionView.ItemsLayout>
+                    <LinearItemsLayout Orientation="Vertical"/>
+                    <!--<GridItemsLayout Orientation="Vertical" Span="2"/>-->
+                </CollectionView.ItemsLayout>
 
-            <CollectionView.Footer>
-                <StackLayout BackgroundColor="{StaticResource Primary}" HeightRequest="30">
-                    <Label Margin="10, 6, 0, 0" 
-                           Text="Tegu Collection Footer"
-                           FontSize="12"
-                           FontAttributes="Bold" />
-                </StackLayout>
-            </CollectionView.Footer>
+                <CollectionView.Header>
+                    <StackLayout BackgroundColor="{StaticResource Primary}" HeightRequest="30">
+                        <Label Margin="10, 6, 0, 0" 
+                               Text="Tegu Collection Header"
+                               FontSize="12"
+                               FontAttributes="Bold" />
+                    </StackLayout>
+                </CollectionView.Header>
 
-            <CollectionView.ItemTemplate>
-                <DataTemplate x:DataType="tegudto:OwnedTeguDto">
-                    <Grid ColumnDefinitions="100, 1*" RowDefinitions="30, 30, 30" Padding="10">
-                        <Label Grid.Row="0" Grid.Column="0" Text="Name:"/>
-                        <Label Grid.Row="0" Grid.Column="1" Text="{Binding Name}"/>
+                <CollectionView.Footer>
+                    <StackLayout BackgroundColor="{StaticResource Primary}" HeightRequest="30">
+                        <Label Margin="10, 6, 0, 0" 
+                               Text="Tegu Collection Footer"
+                               FontSize="12"
+                               FontAttributes="Bold" />
+                    </StackLayout>
+                </CollectionView.Footer>
 
-                        <Label Grid.Row="1" Grid.Column="0" Text="Type:"/>
-                        <Label Grid.Row="1" Grid.Column="1" Text="{Binding TeguType.Name}"/>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate x:DataType="tegudto:OwnedTeguDto">
+                        <Grid ColumnDefinitions="100, 1*" RowDefinitions="30, 30, 30" Padding="10">
+                            <Label Grid.Row="0" Grid.Column="0" Text="Name:"/>
+                            <Label Grid.Row="0" Grid.Column="1" Text="{Binding Name}"/>
 
-                        <Label Grid.Row="2" Grid.Column="0" Text="Owner:"/>
-                        <Label Grid.Row="2" Grid.Column="1" Text="{Binding Owner.FullName}"/>
-                    </Grid>
-                </DataTemplate>
-            </CollectionView.ItemTemplate>
+                            <Label Grid.Row="1" Grid.Column="0" Text="Type:"/>
+                            <Label Grid.Row="1" Grid.Column="1" Text="{Binding TeguType.Name}"/>
 
-        </CollectionView>
+                            <Label Grid.Row="2" Grid.Column="0" Text="Owner:"/>
+                            <Label Grid.Row="2" Grid.Column="1" Text="{Binding Owner.FullName}"/>
+                        </Grid>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+
+            </CollectionView>
+        </RefreshView>
+
 
         <HorizontalStackLayout Grid.Column="1" Grid.Row="2">
             <Label Margin="0,0,6,0" Text="Selected Tegu:"/>

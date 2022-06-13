@@ -42,4 +42,17 @@ public partial class ControlsVM : ViewModelBase
 
     [ObservableProperty]
     private OwnedTeguDto collectionViewSelectedTegu;
+
+    [ObservableProperty]
+    private bool collectionViewIsRefreshing;
+
+    [ICommand]
+    public async void RefreshCollectionView()
+    {
+        CollectionViewIsRefreshing = true;
+
+        await Task.Delay(5000);
+
+        CollectionViewIsRefreshing = false;
+    }
 }
