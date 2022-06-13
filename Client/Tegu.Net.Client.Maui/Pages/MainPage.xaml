@@ -6,6 +6,11 @@
              x:DataType="p:MainVM"
              Title="Main">
 			 
+    <StackLayout HorizontalOptions="Center">
 
+        <Button Margin="10" Text="Go To Controls" Command="{Binding NavigateToControlsCommand}"/>
+        <Button Margin="10" Text="Go To MVVM" Command="{Binding NavigateToMVVMCommand}"/>
+
+    </StackLayout>
  
 </ContentPage>
