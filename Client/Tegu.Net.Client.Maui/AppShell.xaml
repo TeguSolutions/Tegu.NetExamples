@@ -12,6 +12,9 @@
         <Tab Title="Controls">
             <ShellContent ContentTemplate="{DataTemplate p:ControlsPage}" Route="ControlsPage"/>
         </Tab>
+    </TabBar>
+
+    <TabBar>
         <Tab Title="MVVM 1">
             <ShellContent ContentTemplate="{DataTemplate p:MVVMOnePage}" Route="MVVMOnePage"/>
         </Tab>
