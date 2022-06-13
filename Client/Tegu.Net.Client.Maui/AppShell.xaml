@@ -8,11 +8,13 @@
 
     <ShellContent ContentTemplate="{DataTemplate p:MainPage}" Route="MainPage"/>
 
-    <TabBar>
+    <ShellContent ContentTemplate="{DataTemplate p:ControlsPage}" Route="ControlsPage"/>
+
+    <!--<TabBar>
         <Tab Title="Controls">
             <ShellContent ContentTemplate="{DataTemplate p:ControlsPage}" Route="ControlsPage"/>
         </Tab>
-    </TabBar>
+    </TabBar>-->
 
     <TabBar>
         <Tab Title="MVVM 1">
