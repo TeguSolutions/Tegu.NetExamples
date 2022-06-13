@@ -2,9 +2,9 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:p="clr-namespace:Tegu.Net.Client.Maui.Pages"
-             x:Class="Tegu.Net.Client.Maui.Pages.MVVMTwoPage"
-             x:DataType="p:MVVMTwoVM"
-             Title="MVVM 2">
+             x:Class="Tegu.Net.Client.Maui.Pages.NavigationAbsolutePage"
+             x:DataType="p:NavigationAbsoluteVM"
+             Title="NavigationAbsolute">
     <StackLayout>
         <Label Text="Welcome to .NET MAUI!"
                 VerticalOptions="Center" 
