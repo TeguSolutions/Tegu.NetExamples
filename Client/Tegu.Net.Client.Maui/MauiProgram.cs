@@ -1,5 +1,6 @@
 ﻿using CommunityToolkit.Maui;
 using Tegu.Net.Client.Maui.Pages;
+using Tegu.Net.Client.Maui.Services;
 
 namespace Tegu.Net.Client.Maui
 {
@@ -35,6 +36,12 @@ namespace Tegu.Net.Client.Maui
 
             s.AddTransient<NavigationAbsolutePage>();
             s.AddTransient<NavigationAbsoluteVM>();
+
+            #endregion
+
+            #region Services
+
+            s.AddTransient<DataService>();
 
             #endregion
 
