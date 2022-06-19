@@ -44,6 +44,7 @@ namespace Tegu.Net.Client.Maui
             #region Services
 
             s.AddTransient<DataService>();
+            s.AddSingleton<ThemeService>();
 
             #endregion
 

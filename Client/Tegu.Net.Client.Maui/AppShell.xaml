@@ -4,11 +4,12 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:p="clr-namespace:Tegu.Net.Client.Maui.Pages"
+    xmlns:pub="clr-namespace:Tegu.Net.Client.Maui.Pages.Public"
     Shell.FlyoutBehavior="Disabled">
 
-    <ShellContent ContentTemplate="{DataTemplate p:MainPage}" Route="MainPage"/>
+    <ShellContent ContentTemplate="{DataTemplate pub:MainPage}" Route="MainPage"/>
 
-    <ShellContent ContentTemplate="{DataTemplate p:ControlsPage}" Route="ControlsPage"/>
+    <!--<ShellContent ContentTemplate="{DataTemplate p:ControlsPage}" Route="ControlsPage"/>-->
 
     <!--<TabBar>
         <Tab Title="Controls">
@@ -16,14 +17,14 @@
         </Tab>
     </TabBar>-->
 
-    <TabBar>
+    <!--<TabBar>
         <Tab Title="MVVM 1">
             <ShellContent ContentTemplate="{DataTemplate p:MVVMOnePage}" Route="MVVMOnePage"/>
         </Tab>
         <Tab Title="MVVM 2">
             <ShellContent ContentTemplate="{DataTemplate p:MVVMTwoPage}" Route="MVVMTwoPage"/>
         </Tab>
-    </TabBar>
+    </TabBar>-->
 
 
 </Shell>
