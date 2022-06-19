@@ -5,9 +5,31 @@
              x:Class="Tegu.Net.Client.Maui.Pages.Public.MainPage"
              x:DataType="p:MainVM">
 			
-    <Grid>
+    <ScrollView>
+        <StackLayout AbsoluteLayout.LayoutBounds="0, 0, 0, 0" AbsoluteLayout.LayoutFlags="PositionProportional">
+
+            <Label Margin="0,20,0,10" HorizontalTextAlignment="Center" TextColor="{StaticResource Primary}" 
+                   FontSize="24" FontAttributes="Bold" Text="Welcome at Tegu .Net Examples"/>
+
+            <Label HorizontalTextAlignment="Center" FontSize="20" TextColor="{StaticResource Tertiary}" Text="The Ultimate Tegu Manager App!"/>
+
+            <ImageButton Padding="6"  WidthRequest="40" HeightRequest="40" Source="theme_lightblue_128.png"
+                         Command="{Binding ToggleThemeCommand}"/>
+        </StackLayout>
+    </ScrollView>
+
+
+    <!--<AbsoluteLayout>
+        <ImageButton Padding="6"  WidthRequest="40" HeightRequest="40" Source="theme_lightblue_128.png"
+                     Command="{Binding ToggleThemeCommand}"/>
+
+
+    </AbsoluteLayout>-->
+
+
+    <!--<Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="50"/>
+            <RowDefinition Height="50" />
             <RowDefinition Height="40"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="40"/>
@@ -25,7 +47,7 @@
 
         </Grid>
 
-    </Grid>
+    </Grid>-->
 
     <!--<StackLayout HorizontalOptions="Center">
 

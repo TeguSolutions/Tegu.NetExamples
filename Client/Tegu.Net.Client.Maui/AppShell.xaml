@@ -5,9 +5,29 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:p="clr-namespace:Tegu.Net.Client.Maui.Pages"
     xmlns:pub="clr-namespace:Tegu.Net.Client.Maui.Pages.Public"
-    Shell.FlyoutBehavior="Disabled">
+    Shell.FlyoutBehavior="Flyout"
+    FlyoutHeaderBehavior="CollapseOnScroll">
 
-    <ShellContent ContentTemplate="{DataTemplate pub:MainPage}" Route="MainPage"/>
+    <Shell.FlyoutHeader>
+        <Grid>
+            <Image Source="dotnet_bot.png"
+                   HeightRequest="142"
+                   VerticalOptions="Center"
+                   WidthRequest="230"
+                   HorizontalOptions="Center" />
+        </Grid>
+    </Shell.FlyoutHeader>
+    <Shell.FlyoutFooter>
+        <Grid>
+            <ImageButton Padding="6"  WidthRequest="40" HeightRequest="40" Source="theme_lightblue_128.png"/>
+        </Grid>
+    </Shell.FlyoutFooter>
+
+    <ShellContent Title="Main" ContentTemplate="{DataTemplate pub:MainPage}" Route="MainPage"/>
+    <ShellContent Title="Controls" ContentTemplate="{DataTemplate p:ControlsPage}" Route="ControlsPage"/>
+
+
+
 
     <!--<ShellContent ContentTemplate="{DataTemplate p:ControlsPage}" Route="ControlsPage"/>-->
 
