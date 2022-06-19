@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="IBM855"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
@@ -36,7 +36,7 @@
 		<MauiIcon Include="Resources\AppIcon\appicon.svg" ForegroundFile="Resources\AppIcon\appiconfg.svg" Color="#512BD4" />
 
 		<!-- Splash Screen -->
-	  <MauiSplashScreen Include="Resources\Splash\splash.svg" Color="#512BD4" BaseSize="128"/>
+	  <MauiSplashScreen Include="Resources\Splash\splash.svg" Color="#512BD4" BaseSize="128" />
 
 		<!-- Images -->
 		<MauiImage Include="Resources\Images\*" />
@@ -55,22 +55,22 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Compile Update="Pages\NavigationAbsolutePage.xaml.cs">
+	  <Compile Update="Pages\Dev\NavigationAbsolutePage.xaml.cs">
 	    <DependentUpon>NavigationAbsolutePage.xaml</DependentUpon>
 	  </Compile>
 	</ItemGroup>
 
 	<ItemGroup>
-	  <MauiXaml Update="Pages\ControlsPage.xaml">
+	  <MauiXaml Update="Pages\Dev\ControlsPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Pages\MVVMOnePage.xaml">
+	  <MauiXaml Update="Pages\Dev\MVVMOnePage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Pages\MVVMTwoPage.xaml">
+	  <MauiXaml Update="Pages\Dev\MVVMTwoPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Pages\NavigationAbsolutePage.xaml">
+	  <MauiXaml Update="Pages\Dev\NavigationAbsolutePage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	</ItemGroup>

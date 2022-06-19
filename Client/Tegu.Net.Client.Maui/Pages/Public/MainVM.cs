@@ -1,7 +1,6 @@
-﻿
-using Tegu.Net.Client.Maui.Helper;
+﻿using Tegu.Net.Client.Maui.Helper;
 
-namespace Tegu.Net.Client.Maui.Pages;
+namespace Tegu.Net.Client.Maui.Pages.Public;
 
 public partial class MainVM : ViewModelBase
 {

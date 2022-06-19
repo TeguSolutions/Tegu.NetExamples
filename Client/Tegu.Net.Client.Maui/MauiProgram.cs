@@ -1,6 +1,8 @@
 ﻿using CommunityToolkit.Maui;
 using Tegu.Net.Client.Maui.Pages;
 using Tegu.Net.Client.Maui.Services;
+using MainPage = Tegu.Net.Client.Maui.Pages.Public.MainPage;
+using MainVM = Tegu.Net.Client.Maui.Pages.Public.MainVM;
 
 namespace Tegu.Net.Client.Maui
 {

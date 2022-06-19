@@ -1,4 +1,5 @@
 ﻿using Tegu.Net.Client.Maui.Pages;
+using MainPage = Tegu.Net.Client.Maui.Pages.Public.MainPage;
 
 namespace Tegu.Net.Client.Maui;
 
