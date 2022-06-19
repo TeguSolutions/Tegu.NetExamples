@@ -46,7 +46,7 @@ public partial class ControlsVM : ViewModelBase
     [ObservableProperty]
     private bool collectionViewIsRefreshing;
 
-    [ICommand]
+    [RelayCommand]
     public async void RefreshCollectionView()
     {
         CollectionViewIsRefreshing = true;
